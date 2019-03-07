@@ -1,0 +1,19 @@
+{
+  "name": "iot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mqtt": "^2.18.8",
+    "save": "^2.3.3",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheAnh",
+  "license": "ISC"
+}

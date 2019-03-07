@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+      <title>IoT</title>
+      <script src="socket.io/socket.io.js"></script>
+      <script src="jquery.js"></script>
+      <script src="javascrip/Controll.js"></script>
+      <link rel="stylesheet" href="css/Controll.css" />
+      <link rel="stylesheet" href="css/background.css" />
+      <meta name="viewport" content="width=devicewidth, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+          <title>controll</title>
+        </head>
+  <body>
+    <header>
+      <ul>
+        <li>
+          <a href="/">HomePage</a>
+        </li>
+        <li>
+          <a href="Controll">Controll</a>
+        </li>
+        <li>
+          <a href="./History">History</a>
+        </li>
+      </ul>
+    </header>
+    <div class="service-section">
+      <div class="inner-width">
+        <h1 class="section-tile">IoT</h1>
+        <div class="boder"></div>
+        <div class="service-container">
+          <div class="service-box">
+            <div class="service-title">
+              <div>Temperature</div>
+              <span id="data-Temperature">?</span>
+            </div>
+            <div class="service-icon" id="Temperature">
+            </div>
+            <div class="service-title">Node:..................</div>
+            <div class="service-des">
+              <span id="data-motor">?</span>
+            </div>
+            <input id="bnt-motor-on" type="button" value="ON">
+              <input id="bnt-motor-off" type="button" value="OFF">
+                <input class="center" id="cbteamper" type="checkbox" value="1" name="">
+          </div>
+
+          <div class="service-box">
+            <div class="service-title">
+              <div>Light</div>
+              <span id="data-light-px">?</span>
+            </div>
+            <div class="service-icon" id="Linght">
+            </div>
+            <div class="service-title">Node:..................</div>
+            <div class="service-des">
+              <span id="data-Linght">?</span>
+            </div>
+            <input id="bnt-Linght-on" type="button" value="ON">
+              <input id="bnt-Linght-off" type="button" value="OFF">
+                <input class="center" id="cblight" type="checkbox"  value="2" name="">
+          </div>
+
+          <div class="service-box">
+            <div class="service-title">
+              <div>Door</div>
+              <span id="data-door">?</span>
+            </div>
+            <div class="service-icon" id="Door">
+            </div>
+            <div class="service-title">Node:..................</div>
+            <div class="service-des">
+              <span id="data-buzer">?</span>
+            </div>
+            <input id="bnt-buzer-turnon" type="button" value="ON">
+              <input id="bnt-buzer-turnoff" type="button" value="OFF">
+                <input class="center" id="cbDoor" type="checkbox" value="3" name="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
