@@ -10,6 +10,11 @@ var MQTT_TOPIC_Light = 'Light';
 var MQTT_TOPIC_Door = 'Door';
 var MQTT_TOPIC_Buzzer = 'Buzzer';
 
+var Data_Temperature = 'TemperatureData';
+var Data_Motor = 'MotorData';
+var Data_Light = 'LightData';
+var Data_Door = 'DoorData';
+var Data_Buzzer = 'BuzerData';
 
 var MQTT_ADDR = 'mqtt://m16.cloudmqtt.com';
 var Temperature = "";
@@ -52,7 +57,19 @@ require('./App/routes.js')(app);
 server.listen(port);
 console.log("Node is running on port 3000...");
 
+function CheckData(mesage,topic,data) {
+    if (mesage != "") {
+        if ((mesage.indexOf("0 ") != -1) || (mesage.indexOf("1 ") != -1)) {
 
+            topic = mesage.slice(2);
+
+        }
+        else {
+            topic = mesage;
+        }
+        io.emit(data, topic);
+    }
+}
 
 client.on('connect', function () {
     client.subscribe(MQTT_TOPIC_Temperature, { qos: 2 });
@@ -67,83 +84,29 @@ client.on('message', (topic, message) => {
     switch (topic) {
         case MQTT_TOPIC_Temperature:
             {
-                if (message.toString() != "") {
-                    if ((message.toString().indexOf("0 ") != -1) || (message.toString().indexOf("1 ") != -1)) {
-
-                        Temperature = message.toString().slice(2);
-
-                    }
-                    else {
-                        Temperature = message.toString();
-                    }
-                    io.emit("TemperatureData", Temperature);
-                }
+                CheckData(message.toString(), Temperature, Data_Temperature);
                 break;
             }
         case MQTT_TOPIC_Motor:
             {
-                if (message.toString() != "") {
-                    if ((message.toString().indexOf("0 ") != -1) || (message.toString().indexOf("1 ") != -1)) {
-
-                        Motor = message.toString().slice(2);
-
-                    }
-                    else {
-                        Motor = message.toString();
-                    }
-                    io.emit("MotorData", Motor);
-
-                }
+                CheckData(message.toString(), Motor, Data_Motor);
 
                 break;
             }
         case MQTT_TOPIC_Light:
             {
 
-                if (message.toString() != "") {
-                    if ((message.toString().indexOf("0 ") != -1) || (message.toString().indexOf("1 ") != -1)) {
-
-                        Light = message.toString().slice(2);
-
-                    }
-                    else {
-                        Light = message.toString();
-                    }
-                    io.emit("LightData", Light);
-
-                }
+                CheckData(message.toString(), Light, Data_Light);
                 break;
             }
         case MQTT_TOPIC_Door:
             {
-                if (message.toString() != "") {
-                    if ((message.toString().indexOf("0 ") != -1) || (message.toString().indexOf("1 ") != -1)) {
-
-                        Door = message.toString().slice(2);
-
-                    }
-                    else {
-                        Door = message.toString();
-                    }
-                    io.emit("DoorData", Door);
-
-                }
+                CheckData(message.toString(), Door, Data_Door);
                 break;
             }
         case MQTT_TOPIC_Buzzer:
             {
-                if (message.toString() != "") {
-                    if ((message.toString().indexOf("0 ") != -1) || (message.toString().indexOf("1 ") != -1)) {
-
-                        Buzzer = message.toString().slice(2);
-
-                    }
-                    else {
-                        Buzzer = message.toString();
-                    }
-                    io.emit("BuzzerData", Buzzer);
-
-                }
+                CheckData(message.toString(), Buzzer, Data_Buzzer);
                 break;
             }
         default: {
